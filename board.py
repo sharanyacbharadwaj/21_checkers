@@ -14,6 +14,18 @@ def initial_board():
     return board
 
 
+def in_bounds(r, c):
+    return 0 <= r < SIZE and 0 <= c < SIZE
+
+
 def move_piece(board, start, end):
     board[end[0]][end[1]] = board[start[0]][start[1]]
     board[start[0]][start[1]] = "."
+
+
+def remove_piece(board, pos):
+    board[pos[0]][pos[1]] = "."
+
+
+def count_pieces(board, player):
+    return sum(1 for row in board for cell in row if cell != "." and cell[0] == player)
